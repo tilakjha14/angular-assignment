@@ -1,0 +1,15 @@
+<h2>First component display lists of employes from list.service.ts</h2>
+
+<ul>
+  <li
+    [ngStyle]="{
+      'border-bottom': '1px solid #000',
+      'padding-bottom': '5px',
+    }"
+    *ngFor="let item of list"
+  >
+    Emp Id - <strong>{{ item.id }}</strong
+    >, Name -<strong> {{ item.name }}</strong> ,Employment Type -
+    <strong>{{ item.empType }}</strong>
+  </li>
+</ul>

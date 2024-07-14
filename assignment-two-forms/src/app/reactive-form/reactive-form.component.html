@@ -1,0 +1,51 @@
+<h2>Reactive Form</h2>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="field-wrapper">
+    <div>
+      <label>Name - </label>
+      <input type="text" formControlName="name" minlength="3" />
+    </div>
+    <div *ngIf="userForm.get('name') && userForm.get('name')?.touched">
+      <span class="err-msg" *ngIf="userForm.get('name')?.errors?.['required']"
+        >Name can't be empty</span
+      >
+      <span class="err-msg" *ngIf="userForm.get('name')?.errors?.['minlength']"
+        >Name should be atleast 3 characters</span
+      >
+    </div>
+  </div>
+  <div class="field-wrapper">
+    <div>
+      <label>Email - </label>
+      <input type="text" formControlName="email" />
+    </div>
+    <div *ngIf="userForm.get('email') && userForm.get('email')?.touched">
+      <span class="err-msg" *ngIf="userForm.get('email')?.errors?.['required']"
+        >Email can't be empty</span
+      >
+      <span class="err-msg" *ngIf="userForm.get('email')?.errors?.['email']"
+        >Provide email</span
+      >
+    </div>
+  </div>
+
+  <div formArrayName="skills" class="field-wrapper">
+    <label class="addSkillLabel"
+      >Skills - <button type="button" (click)="addSkill()">Add Skill</button
+      ><br />
+    </label>
+    <div
+      *ngFor="let skill of skills.controls; let i = index"
+      class="field-wrapper"
+    >
+      <label for="skill-{{ i }}">Skill {{ i + 1 }}:</label>
+      <input [id]="'skill-' + i" [formControlName]="i" />
+      <button type="button" (click)="removeSkill(i)">Remove</button>
+      <div *ngIf="skill.touched && skill.invalid">
+        <span *ngIf="skill.errors?.['required']"> Skill can't be empty </span>
+      </div>
+    </div>
+  </div>
+
+  <button>Submit</button>
+</form>

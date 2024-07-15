@@ -1,0 +1,14 @@
+<ng-container *ngIf="task">
+  <mat-card>
+    <mat-card-title>{{ task.name }}</mat-card-title>
+    <mat-card-subtitle>Due: {{ task.dueDate | date }}</mat-card-subtitle>
+    <mat-card-content>
+      <p>Priority: {{ task.priority }}</p>
+      <p>{{ task.notes }}</p>
+      <p>Status: {{ task.completed ? "Completed" : "Pending" }}</p>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+<ng-container *ngIf="!task">
+  <p>Task not found.</p>
+</ng-container>

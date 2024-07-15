@@ -1,0 +1,26 @@
+<div>
+  <button mat-raised-button color="primary" [routerLink]="['/tasks/new']">
+    Add New Task
+  </button>
+</div>
+<div>
+  <input matInput placeholder="Search tasks" (input)="onSearch($event)" />
+  <mat-slide-toggle (change)="toggleCompletedTasks()"
+    >Show Completed Tasks</mat-slide-toggle
+  >
+</div>
+<div>
+  <mat-card *ngFor="let task of filteredTasks">
+    <mat-card-title>{{ task.name }}</mat-card-title>
+    <mat-card-subtitle>Due: {{ task.dueDate | date }}</mat-card-subtitle>
+    <mat-card-content>
+      <p>Priority: {{ task.priority }}</p>
+      <p>{{ task.notes }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="editTask(task.id)">Edit</button>
+      <button mat-button (click)="confirmDeleteTask(task.id)">Delete</button>
+      <button mat-button [routerLink]="['/tasks/view', task.id]">View</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

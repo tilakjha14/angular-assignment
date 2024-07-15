@@ -1,13 +1,15 @@
 <div>
-  <button mat-raised-button color="primary" [routerLink]="['/tasks/new']">
-    Add New Task
-  </button>
-</div>
-<div>
-  <input matInput placeholder="Search tasks" (input)="onSearch($event)" />
-  <mat-slide-toggle (change)="toggleCompletedTasks()"
-    >Show Completed Tasks</mat-slide-toggle
-  >
+  <div class="task--addNew">
+    <button mat-raised-button color="primary" [routerLink]="['/tasks/new']">
+      Add New Task
+    </button>
+  </div>
+  <div class="task-completed-search">
+    <input matInput placeholder="Search tasks" (input)="onSearch($event)" />
+    <mat-slide-toggle (change)="toggleCompletedTasks()"
+      >Show Completed Tasks</mat-slide-toggle
+    >
+  </div>
 </div>
 <div>
   <mat-card *ngFor="let task of filteredTasks">

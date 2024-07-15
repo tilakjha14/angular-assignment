@@ -1,0 +1,16 @@
+.task--addNew {
+  margin-bottom: 20px;
+}
+.task-completed-search {
+  margin-bottom: 10px;
+}
+.mat-mdc-card.mdc-card {
+  padding: 20px 10px 0px;
+  margin-bottom: 10px;
+}
+.mat-mdc-input-element {
+  height: 32px;
+  line-height: 32px;
+  padding: 0 5px;
+  margin-right: 10px;
+}
